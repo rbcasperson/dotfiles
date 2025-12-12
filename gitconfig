@@ -1,0 +1,6 @@
+[alias]
+lg = log --pretty=tformat:'%Cred%h%Creset - %Creset %s $Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n
+uhoh = reset HEAD^
+
+[core]
+excludesfile = ~/.gitignore

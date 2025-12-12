@@ -1,0 +1,24 @@
+function getbranch {
+  git branch | grep \* | cut -d ' ' -f2
+}
+
+function getdefaultbranch {
+    git symbolic-ref refs/remotes/origin/HEAD | sed 's|.*/||'
+}
+
+# Push the current branch and set it up to track locally
+function gitpush {
+  branch=`getbranch`
+  git push -u origin ${branch}
+}
+
+# Short for "git fetch master/main"
+# Fetch the default branch to your local.
+# This is useful when wanting to manually merge or rebase a branch with the default branch
+# without having to switch away from the current branch and then back again.
+function gfm {
+  default_branch=`getdefaultbranch`
+  git fetch origin ${default_branch}:${default_branch}
+}
+
+alias grne="git revert --no-edit"
